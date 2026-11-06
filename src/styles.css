@@ -809,3 +809,965 @@ a {
   .gp-navbar__container { flex-wrap: wrap; }
   .gp-navbar__nav { order: 3; width: 100%; overflow-x: auto; padding-top: 8px; }
 }
+
+/* ==========================================================================
+   COMMERCIAL E-COMMERCE UI/UX UPGRADE STYLES
+   ========================================================================== */
+
+/* 1. TOP ANNOUNCEMENT BAR */
+.gp-announcement-bar {
+  background: linear-gradient(90deg, #090d16 0%, #172554 50%, #090d16 100%);
+  color: #e2e8f0;
+  font-size: 0.78rem;
+  padding: 6px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  overflow-x: auto;
+}
+
+.announcement-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  white-space: nowrap;
+}
+
+.announcement-content code {
+  background: #f59e0b;
+  color: #000;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 800;
+}
+
+.announcement-divider {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* 2. NAV SEARCH AUTOCOMPLETE */
+.gp-nav-search {
+  position: relative;
+  flex: 1;
+  max-width: 320px;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  background: var(--bg-surface-alt);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  padding: 4px 12px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-form:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+.search-icon {
+  font-size: 0.85rem;
+  margin-right: 8px;
+  opacity: 0.6;
+}
+
+.nav-search-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  color: var(--text-main);
+  font-size: 0.84rem;
+  width: 100%;
+}
+
+.search-dropdown-results {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+  z-index: 1050;
+  padding: 8px;
+  max-height: 380px;
+  overflow-y: auto;
+}
+
+.search-results-header {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 6px 10px;
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 8px 10px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.search-result-item:hover {
+  background: var(--bg-surface-alt);
+}
+
+.search-result-item img {
+  width: 44px;
+  height: 36px;
+  border-radius: 6px;
+  object-fit: cover;
+  background: #090d16;
+}
+
+.search-result-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.result-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.result-cat {
+  font-size: 0.72rem;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* 3. ACTION PILLS */
+.gp-action-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-surface-alt);
+  border: 1px solid var(--border-color);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.gp-action-pill:hover {
+  border-color: var(--hot);
+  transform: translateY(-1px);
+}
+
+.action-count {
+  background: var(--hot);
+  color: #fff;
+  border-radius: 999px;
+  padding: 1px 7px;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+/* 4. OFFCANVAS DRAWERS (Cart & Wishlist) */
+.gp-cart-drawer {
+  width: min(440px, 92vw) !important;
+  background: var(--bg-surface) !important;
+  color: var(--text-main) !important;
+}
+
+.gp-cart-drawer .offcanvas-header {
+  border-bottom: 1px solid var(--border-color);
+  padding: 18px 24px;
+}
+
+.gp-cart-drawer .offcanvas-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.drawer-count-badge {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.gp-cart-drawer__body {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.drawer-empty-state {
+  text-align: center;
+  padding: 60px 10px;
+  margin: auto;
+}
+
+.drawer-empty-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.drawer-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.drawer-item-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  background: var(--bg-surface-alt);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  position: relative;
+}
+
+.drawer-item-thumb {
+  width: 64px;
+  height: 52px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #090d16;
+}
+
+.drawer-item-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.drawer-item-name {
+  display: block;
+  font-weight: 600;
+  font-size: 0.88rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 2px;
+}
+
+.drawer-item-name:hover {
+  color: var(--primary);
+}
+
+.drawer-item-price {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 0.88rem;
+}
+
+.drawer-qty-stepper {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  margin-top: 4px;
+  background: var(--bg-surface);
+}
+
+.drawer-qty-stepper button {
+  border: none;
+  background: transparent;
+  padding: 1px 8px;
+  font-weight: 700;
+  color: var(--text-main);
+  cursor: pointer;
+}
+
+.drawer-qty-stepper span {
+  padding: 0 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.drawer-remove-btn {
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.15s;
+}
+
+.drawer-remove-btn:hover {
+  color: var(--hot);
+}
+
+.gp-cart-drawer__footer {
+  padding: 18px 24px;
+  border-top: 1px solid var(--border-color);
+  background: var(--bg-surface);
+}
+
+.drawer-totals {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.drawer-subtotal-row, .drawer-discount-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.drawer-final-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.05rem;
+  font-weight: 800;
+  padding-top: 6px;
+  border-top: 1px dashed var(--border-color);
+}
+
+.drawer-final-row .final-price {
+  color: var(--primary);
+}
+
+.drawer-cta-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btn-drawer-checkout {
+  padding: 10px;
+  font-weight: 700;
+  border-radius: 10px;
+}
+
+.btn-drawer-cart {
+  padding: 8px;
+  font-weight: 600;
+  border-radius: 10px;
+}
+
+/* 5. CATALOG 2-COLUMN SIDEBAR & ADVANCED FILTERS */
+.gp-catalog-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.gp-filter-sidebar {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 24px;
+  position: sticky;
+  top: 90px;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 20px;
+}
+
+.sidebar-header h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.btn-clear-filters {
+  font-size: 0.78rem;
+  padding: 0;
+  text-decoration: underline;
+  color: var(--hot);
+}
+
+.sidebar-section {
+  margin-bottom: 22px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.sidebar-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  color: var(--primary);
+}
+
+.category-pills-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.category-pill-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+  background: transparent;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.category-pill-btn:hover {
+  background: var(--bg-surface-alt);
+  color: var(--text-main);
+}
+
+.category-pill-btn.active {
+  background: var(--primary);
+  color: #fff;
+  font-weight: 700;
+}
+
+.brand-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.brand-check-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: var(--text-main);
+}
+
+.brand-check-item input[type='checkbox'] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+.price-slider-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.price-slider-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.price-slider-range {
+  accent-color: var(--primary);
+}
+
+.price-slider-ticks {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.star-filter-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.star-filter-btn {
+  border: 1px solid var(--border-color);
+  background: transparent;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  color: var(--text-main);
+  transition: all 0.15s;
+}
+
+.star-filter-btn:hover {
+  background: var(--bg-surface-alt);
+}
+
+.star-filter-btn.active {
+  background: color-mix(in srgb, var(--primary) 15%, transparent);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.catalog-top-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 12px 18px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.toolbar-stats {
+  font-size: 0.88rem;
+}
+
+.toolbar-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.view-switcher-group {
+  display: flex;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.view-btn {
+  border: none;
+  background: transparent;
+  padding: 6px 12px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: background 0.15s;
+}
+
+.view-btn.active {
+  background: var(--primary);
+  color: #fff;
+}
+
+.catalog-active-filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.filter-tag-pill {
+  background: var(--bg-surface-alt);
+  border: 1px solid var(--border-color);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-main);
+}
+
+.filter-tag-remove {
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0;
+}
+
+.filter-tag-remove:hover {
+  color: var(--hot);
+}
+
+/* LIST VIEW LAYOUT */
+.gp-products-list-view {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.gp-products-list-view .gp-product-card {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 20px;
+  align-items: center;
+  padding: 14px;
+}
+
+.gp-products-list-view .gp-product-card__thumb-wrap {
+  height: 180px;
+}
+
+/* 6. PRODUCT DETAIL UPGRADES (Gallery, Variants & Reviews) */
+.detail-hero-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 16px;
+  transition: transform 0.3s ease;
+}
+
+.detail-wishlist-toggle {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--bg-surface) 85%, transparent);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-color);
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.15s, background-color 0.15s;
+}
+
+.detail-wishlist-toggle:hover {
+  transform: scale(1.1);
+}
+
+.detail-thumbnail-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.detail-thumb-btn {
+  width: 72px;
+  height: 56px;
+  border-radius: 10px;
+  border: 2px solid var(--border-color);
+  background: #090d16;
+  padding: 2px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.detail-thumb-btn.active {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.detail-thumb-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.detail-variant-group {
+  margin-bottom: 18px;
+}
+
+.variant-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.variant-options {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.variant-pill-btn {
+  border: 1px solid var(--border-color);
+  background: var(--bg-surface-alt);
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.variant-pill-btn:hover {
+  border-color: var(--primary);
+}
+
+.variant-pill-btn.active {
+  border-color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 15%, transparent);
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.gp-btn-wishlist-action {
+  white-space: nowrap;
+}
+
+/* REVIEWS & RATINGS */
+.reviews-section-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.reviews-overview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.rating-summary-card, .write-review-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 24px;
+}
+
+.overall-score {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.overall-score .score-num {
+  font-size: 3rem;
+  font-weight: 800;
+  font-family: 'Space Grotesk', sans-serif;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.overall-score .score-max {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+.score-stars {
+  color: #f59e0b;
+  font-size: 1.3rem;
+  margin: 6px 0;
+}
+
+.score-caption {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.rating-breakdown-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.breakdown-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.8rem;
+}
+
+.star-label {
+  width: 32px;
+  font-weight: 600;
+}
+
+.progress-track {
+  flex: 1;
+  height: 8px;
+  background: var(--bg-surface-alt);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #f59e0b;
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.count-label {
+  width: 24px;
+  text-align: right;
+  color: var(--text-muted);
+}
+
+.reviews-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.customer-review-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 18px;
+}
+
+.review-card-header {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.reviewer-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: #fff;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.reviewer-meta {
+  flex: 1;
+}
+
+.reviewer-name {
+  display: block;
+  font-size: 0.9rem;
+}
+
+.verified-badge {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--success);
+  font-weight: 600;
+}
+
+.review-date {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.reviewer-stars {
+  color: #f59e0b;
+  font-size: 0.95rem;
+}
+
+.review-text {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin: 0;
+  color: var(--text-main);
+}
+
+/* 7. ADMIN KPI STAT CARDS */
+.admin-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.admin-kpi-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  padding: 20px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.admin-kpi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.kpi-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.bg-primary-soft { background: color-mix(in srgb, var(--primary) 15%, transparent); }
+.bg-success-soft { background: color-mix(in srgb, var(--success) 15%, transparent); }
+.bg-warning-soft { background: color-mix(in srgb, var(--sale) 15%, transparent); }
+.bg-info-soft { background: color-mix(in srgb, var(--new) 15%, transparent); }
+
+.kpi-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.kpi-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.kpi-value {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.kpi-meta {
+  font-size: 0.72rem;
+}
+
+/* RESPONSIVE UPGRADE RULES */
+@media (max-width: 992px) {
+  .gp-catalog-layout {
+    grid-template-columns: 1fr;
+  }
+  .gp-filter-sidebar {
+    position: static;
+  }
+  .reviews-overview-grid {
+    grid-template-columns: 1fr;
+  }
+}

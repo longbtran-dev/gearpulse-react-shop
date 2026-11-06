@@ -5,13 +5,16 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import App from './App';
 import AuthProvider from './context/AuthProvider';
 import CartProvider from './context/CartProvider';
+import WishlistProvider from './context/WishlistProvider';
 
 function renderApp(initialRoute = '/') {
   return render(
     <MemoryRouter initialEntries={[initialRoute]}>
       <AuthProvider>
         <CartProvider>
-          <App />
+          <WishlistProvider>
+            <App />
+          </WishlistProvider>
         </CartProvider>
       </AuthProvider>
     </MemoryRouter>
@@ -42,11 +45,11 @@ describe('GearPulse App Navigation (Integration)', () => {
     expect(await screen.findByRole('heading', { name: /trung tâm chăm sóc khách hàng/i })).toBeInTheDocument();
   });
 
-  it('navigates to cart page and displays empty cart when no items selected', async () => {
+  it('opens cart drawer and displays empty cart when no items selected', async () => {
     const user = userEvent.setup();
     renderApp('/');
 
     await user.click(screen.getByLabelText(/shopping cart/i));
-    expect(await screen.findByRole('heading', { name: /giỏ hàng của bạn đang trống/i })).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { name: /giỏ hàng đang trống/i })).toBeInTheDocument();
   });
 });

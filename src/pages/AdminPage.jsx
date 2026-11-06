@@ -86,6 +86,17 @@ export default function AdminPage({
       (p.brand && p.brand.toLowerCase().includes(query))
   );
 
+  // Commercial Dashboard KPI Metrics
+  const totalProductsCount = products.length;
+  const inStockCount = products.filter((p) => p.inStock).length;
+  const totalInventoryValue = products.reduce(
+    (sum, p) => sum + (Number(p.price) || 0) * (Number(p.stock) || 20),
+    0
+  );
+  const avgRatingSystem = totalProductsCount > 0
+    ? (products.reduce((sum, p) => sum + (Number(p.rating) || 5), 0) / totalProductsCount).toFixed(1)
+    : '5.0';
+
   return (
     <div className="gp-admin-page">
       <header className="gp-page-header">
@@ -105,6 +116,45 @@ export default function AdminPage({
           </Button>
         </div>
       </header>
+
+      {/* Commercial Admin KPI Stat Cards */}
+      <div className="admin-kpi-grid mb-4">
+        <div className="admin-kpi-card">
+          <div className="kpi-icon-wrap bg-primary-soft">📦</div>
+          <div className="kpi-body">
+            <span className="kpi-title">Tổng mã SKU</span>
+            <span className="kpi-value">{totalProductsCount}</span>
+            <span className="kpi-meta text-muted">Sản phẩm toàn hệ thống</span>
+          </div>
+        </div>
+
+        <div className="admin-kpi-card">
+          <div className="kpi-icon-wrap bg-success-soft">✅</div>
+          <div className="kpi-body">
+            <span className="kpi-title">Sẵn sàng giao hàng</span>
+            <span className="kpi-value text-success">{inStockCount}</span>
+            <span className="kpi-meta text-muted">{totalProductsCount - inStockCount} mã đang hết hàng</span>
+          </div>
+        </div>
+
+        <div className="admin-kpi-card">
+          <div className="kpi-icon-wrap bg-warning-soft">💰</div>
+          <div className="kpi-body">
+            <span className="kpi-title">Giá trị tồn kho ước tính</span>
+            <span className="kpi-value text-warning">${totalInventoryValue.toLocaleString()}</span>
+            <span className="kpi-meta text-muted">Định giá kho hiện tại</span>
+          </div>
+        </div>
+
+        <div className="admin-kpi-card">
+          <div className="kpi-icon-wrap bg-info-soft">⭐</div>
+          <div className="kpi-body">
+            <span className="kpi-title">Đánh giá trung bình</span>
+            <span className="kpi-value text-info">{avgRatingSystem} / 5.0</span>
+            <span className="kpi-meta text-muted">Chỉ số hài lòng khách hàng</span>
+          </div>
+        </div>
+      </div>
 
       {/* Action feedback banner */}
       {feedback && (

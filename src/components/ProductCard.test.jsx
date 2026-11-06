@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { describe, expect, it, vi } from 'vitest';
 import ProductCard from './ProductCard';
+import WishlistProvider from '../context/WishlistProvider';
 
 describe('ProductCard component (Lab 1 - Components & Props)', () => {
   const sampleProduct = {
@@ -22,7 +23,9 @@ describe('ProductCard component (Lab 1 - Components & Props)', () => {
   it('renders product details, pricing, discount, and status badges', () => {
     render(
       <MemoryRouter>
-        <ProductCard product={sampleProduct} onQuickView={vi.fn()} onAddToCart={vi.fn()} />
+        <WishlistProvider>
+          <ProductCard product={sampleProduct} onQuickView={vi.fn()} onAddToCart={vi.fn()} />
+        </WishlistProvider>
       </MemoryRouter>
     );
 
@@ -41,11 +44,13 @@ describe('ProductCard component (Lab 1 - Components & Props)', () => {
 
     render(
       <MemoryRouter>
-        <ProductCard
-          product={sampleProduct}
-          onQuickView={handleQuickView}
-          onAddToCart={handleAddToCart}
-        />
+        <WishlistProvider>
+          <ProductCard
+            product={sampleProduct}
+            onQuickView={handleQuickView}
+            onAddToCart={handleAddToCart}
+          />
+        </WishlistProvider>
       </MemoryRouter>
     );
 

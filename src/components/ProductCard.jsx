@@ -1,9 +1,13 @@
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
+import useWishlist from '../hooks/useWishlist';
 
 const placeholder = `${import.meta.env.BASE_URL || '/'}product-placeholder.svg`;
 
 export default function ProductCard({ product, onQuickView, onAddToCart }) {
+  const { isInWishlist, toggleWishlist } = useWishlist();
+  const isFavorite = isInWishlist(product.id);
+
   const hasDiscount = product.originalPrice && product.originalPrice > product.price;
   const discountPercent = hasDiscount
     ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
@@ -26,7 +30,7 @@ export default function ProductCard({ product, onQuickView, onAddToCart }) {
           />
         </Link>
 
-        {/* Badges (Lab 1: Conditional rendering) */}
+        {/* Badges */}
         <div className="gp-product-card__badges">
           {product.isHot && <span className="badge-pill badge-pill--hot">HOT</span>}
           {product.isNew && <span className="badge-pill badge-pill--new">NEW</span>}
@@ -34,7 +38,17 @@ export default function ProductCard({ product, onQuickView, onAddToCart }) {
           {!product.inStock && <span className="badge-pill badge-pill--out">Hết hàng</span>}
         </div>
 
-        {/* Quick View trigger (Lab 2: useState + Modal) */}
+        {/* Wishlist Heart Button */}
+        <button
+          type="button"
+          className={`gp-product-card__wishlist-btn ${isFavorite ? 'active' : ''}`}
+          aria-label={isFavorite ? `Bỏ yêu thích ${product.name}` : `Yêu thích ${product.name}`}
+          onClick={() => toggleWishlist(product)}
+        >
+          {isFavorite ? '❤️' : '🤍'}
+        </button>
+
+        {/* Quick View trigger */}
         <button
           type="button"
           className="gp-product-card__quickview-btn"
@@ -50,6 +64,7 @@ export default function ProductCard({ product, onQuickView, onAddToCart }) {
           <span className="gp-product-card__category">{product.category}</span>
           <span className="gp-product-card__rating" aria-label={`Rating ${product.rating} / 5`}>
             ★ {product.rating}.0
+            {product.reviewsCount ? ` (${product.reviewsCount})` : ''}
           </span>
         </div>
 
@@ -62,6 +77,9 @@ export default function ProductCard({ product, onQuickView, onAddToCart }) {
         <div className="gp-product-card__pricing">
           <span className="current-price">${product.price}</span>
           {hasDiscount && <span className="original-price">${product.originalPrice}</span>}
+          {product.salesCount && (
+            <span className="sold-count">Đã bán {product.salesCount}</span>
+          )}
         </div>
 
         <div className="gp-product-card__actions">

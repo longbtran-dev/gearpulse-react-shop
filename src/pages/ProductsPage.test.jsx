@@ -4,6 +4,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import ProductsPage from './ProductsPage';
 import CartProvider from '../context/CartProvider';
+import WishlistProvider from '../context/WishlistProvider';
 
 const testProducts = [
   {
@@ -44,6 +45,24 @@ const testProducts = [
   }
 ];
 
+function renderProductsPage(props = {}) {
+  return render(
+    <MemoryRouter>
+      <WishlistProvider>
+        <CartProvider>
+          <ProductsPage
+            products={testProducts}
+            loading={false}
+            error={null}
+            onRetry={vi.fn()}
+            {...props}
+          />
+        </CartProvider>
+      </WishlistProvider>
+    </MemoryRouter>
+  );
+}
+
 describe('ProductsPage (Lab 2 - useState Search/Filter & Lab 5 - Routing)', () => {
   beforeEach(() => {
     localStorage.clear();
@@ -51,13 +70,7 @@ describe('ProductsPage (Lab 2 - useState Search/Filter & Lab 5 - Routing)', () =
 
   it('renders all products and filters by search query', async () => {
     const user = userEvent.setup();
-    render(
-      <MemoryRouter>
-        <CartProvider>
-          <ProductsPage products={testProducts} loading={false} error={null} onRetry={vi.fn()} />
-        </CartProvider>
-      </MemoryRouter>
-    );
+    renderProductsPage();
 
     expect(screen.getByText('CyberBlade Pro 75%')).toBeInTheDocument();
     expect(screen.getByText('ViperStrike 4K Wireless Mouse')).toBeInTheDocument();
@@ -72,13 +85,7 @@ describe('ProductsPage (Lab 2 - useState Search/Filter & Lab 5 - Routing)', () =
 
   it('filters by category button selection', async () => {
     const user = userEvent.setup();
-    render(
-      <MemoryRouter>
-        <CartProvider>
-          <ProductsPage products={testProducts} loading={false} error={null} onRetry={vi.fn()} />
-        </CartProvider>
-      </MemoryRouter>
-    );
+    renderProductsPage();
 
     const mousePill = screen.getByRole('button', { name: 'Mouse' });
     await user.click(mousePill);

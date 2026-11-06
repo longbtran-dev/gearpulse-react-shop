@@ -1,47 +1,20 @@
-function createProductSvg(title, color1, color2, iconType) {
-  const icons = {
-    keyboard: `<rect x="220" y="240" width="360" height="150" rx="16" fill="#1e293b" stroke="${color1}" stroke-width="6"/>
-      <rect x="250" y="265" width="40" height="30" rx="6" fill="${color2}"/>
-      <rect x="305" y="265" width="40" height="30" rx="6" fill="${color2}"/>
-      <rect x="360" y="265" width="40" height="30" rx="6" fill="${color2}"/>
-      <rect x="415" y="265" width="40" height="30" rx="6" fill="${color2}"/>
-      <rect x="470" y="265" width="80" height="30" rx="6" fill="${color1}"/>
-      <rect x="250" y="310" width="60" height="30" rx="6" fill="${color2}"/>
-      <rect x="325" y="310" width="180" height="30" rx="6" fill="${color1}"/>
-      <rect x="520" y="310" width="30" height="30" rx="6" fill="${color2}"/>`,
-    mouse: `<path d="M400 180 C340 180 320 250 320 340 C320 430 350 480 400 480 C450 480 480 430 480 340 C480 250 460 180 400 180 Z" fill="#1e293b" stroke="${color1}" stroke-width="6"/>
-      <line x1="400" y1="180" x2="400" y2="300" stroke="${color1}" stroke-width="5"/>
-      <rect x="390" y="230" width="20" height="40" rx="10" fill="${color2}"/>
-      <circle cx="400" cy="380" r="16" fill="${color1}" opacity="0.6"/>`,
-    headset: `<path d="M280 320 A120 120 0 0 1 520 320" fill="none" stroke="${color1}" stroke-width="16" stroke-linecap="round"/>
-      <rect x="250" y="300" width="40" height="80" rx="20" fill="${color2}" stroke="#0f172a" stroke-width="4"/>
-      <rect x="510" y="300" width="40" height="80" rx="20" fill="${color2}" stroke="#0f172a" stroke-width="4"/>
-      <path d="M280 370 Q340 430 400 410" fill="none" stroke="${color1}" stroke-width="8" stroke-linecap="round"/>
-      <circle cx="406" cy="410" r="12" fill="${color2}"/>`,
-    monitor: `<rect x="220" y="180" width="360" height="230" rx="12" fill="#0f172a" stroke="${color1}" stroke-width="8"/>
-      <rect x="235" y="195" width="330" height="200" fill="#1e293b"/>
-      <polygon points="340,360 460,250 440,360" fill="${color2}" opacity="0.8"/>
-      <path d="M380 410 L370 470 L430 470 L420 410 Z" fill="${color1}"/>
-      <rect x="340" y="470" width="120" height="14" rx="7" fill="${color2}"/>`,
-    deskgear: `<rect x="220" y="240" width="360" height="180" rx="12" fill="#1e293b" stroke="${color1}" stroke-width="6"/>
-      <circle cx="400" cy="330" r="45" fill="${color2}" opacity="0.7"/>
-      <line x1="260" y1="380" x2="540" y2="380" stroke="${color1}" stroke-width="4"/>`
+// Cung cấp hình ảnh công nghệ studio chất lượng cao với fallback SVG tự chứa
+function getTechPhoto(id, category) {
+  const photos = {
+    '1': 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=1000&q=80',
+    '2': 'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=1000&q=80',
+    '3': 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1000&q=80',
+    '4': 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=1000&q=80',
+    '5': 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=1000&q=80',
+    '6': 'https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&w=1000&q=80',
+    '7': 'https://images.unsplash.com/photo-1626218174358-7769486c4b79?auto=format&fit=crop&w=1000&q=80',
+    '8': 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=1000&q=80',
+    '9': 'https://images.unsplash.com/photo-1547119957-637f8679db1e?auto=format&fit=crop&w=1000&q=80',
+    '10': 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1000&q=80',
+    '11': 'https://images.unsplash.com/photo-1544652478-6653e09f18a2?auto=format&fit=crop&w=1000&q=80',
+    '12': 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=1000&q=80'
   };
-
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
-    <defs>
-      <radialGradient id="grad-${title.replace(/\s+/g, '')}" cx="50%" cy="40%" r="65%">
-        <stop offset="0%" stop-color="#1e293b"/>
-        <stop offset="100%" stop-color="#090d16"/>
-      </radialGradient>
-    </defs>
-    <rect width="800" height="600" fill="url(#grad-${title.replace(/\s+/g, '')})"/>
-    <circle cx="400" cy="300" r="180" fill="${color1}" opacity="0.08"/>
-    ${icons[iconType] || icons.deskgear}
-    <text x="400" y="530" font-family="system-ui, sans-serif" font-size="24" font-weight="700" fill="#f8fafc" text-anchor="middle" letter-spacing="1.5">${title}</text>
-  </svg>`;
-
-  return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+  return photos[id] || 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1000&q=80';
 }
 
 export const PRODUCT_CATEGORIES = [
@@ -53,6 +26,14 @@ export const PRODUCT_CATEGORIES = [
   'Desk Gear'
 ];
 
+export const PRODUCT_BRANDS = [
+  'VortexTech',
+  'AeroPulse',
+  'AcoustiGear',
+  'LumixView',
+  'NovaForge'
+];
+
 export const initialProducts = [
   {
     id: '1',
@@ -62,20 +43,35 @@ export const initialProducts = [
     price: 189,
     originalPrice: 219,
     rating: 5,
-    reviewsCount: 42,
+    reviewsCount: 142,
+    salesCount: 890,
     isHot: true,
     isNew: false,
     inStock: true,
     stock: 24,
-    image: createProductSvg('CyberBlade 75%', '#06b6d4', '#3b82f6', 'keyboard'),
-    description: 'Bàn phím cơ không dây layout 75% gõ đầm tay, switch Gateron Pro pre-lubed mượt mà, kết nối 3 chế độ (2.4Ghz/Bluetooth/Type-C) kèm núm xoay kim loại CNC đa năng.',
+    image: getTechPhoto('1', 'Keyboard'),
+    gallery: [
+      getTechPhoto('1', 'Keyboard'),
+      'https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&w=1000&q=80'
+    ],
+    variants: {
+      switches: ['Gateron Pro Yellow (Linear)', 'Gateron Pro Silver (Speed)', 'Gateron Pro Brown (Tactile)'],
+      colors: ['Obsidian Black', 'Cyber Cyan', 'Glacier White']
+    },
+    description: 'Bàn phím cơ không dây layout 75% gõ đầm tay chuẩn e-Sports, switch Gateron Pro pre-lubed mượt mà, cấu trúc Gasket Mount 5 lớp tiêu âm Poron cao cấp. Kết nối 3 chế độ (2.4Ghz/Bluetooth 5.1/Type-C) kèm núm xoay kim loại CNC đa chức năng tùy biến âm lượng và hiệu ứng LED RGB.',
     specs: {
-      Layout: '75% Compact (82 phím)',
-      Switch: 'Gateron Pro Yellow (Hot-swap 5-pin)',
-      Connectivity: 'Tri-mode: 2.4G / BT 5.1 / Type-C',
-      Battery: '4000mAh (lên tới 200 giờ)',
-      Keycaps: 'PBT Double-shot Cherry Profile'
-    }
+      'Layout': '75% Compact (82 phím + Núm xoay CNC kim loại)',
+      'Mounting': 'Gasket Mount silicone + 5 lớp lót tiêu âm Poron/IXPE',
+      'Switch': 'Gateron Pro Pre-lubed (Hot-swap 5-pin TTC socket)',
+      'Kết nối': 'Tri-mode: 2.4GHz không độ trễ / Bluetooth 5.1 / Type-C rời',
+      'Pin & Thời lượng': '4000mAh (lên tới 200 giờ khi tắt LED, 45 giờ bật LED)',
+      'Keycaps': 'PBT Double-shot Cherry Profile chống bóng mòn vĩnh viễn'
+    },
+    reviews: [
+      { id: 'r1', author: 'Đức Huy', rating: 5, date: '2 ngày trước', comment: 'Âm thanh gõ đầm thock cực kỳ đã tai, gasket mount nhún rất êm tay. Đáng đồng tiền bát gạo!' },
+      { id: 'r2', author: 'Minh Tuấn', rating: 5, date: '1 tuần trước', comment: 'Kết nối 2.4Ghz chơi CS2 và Valorant mượt mà, không thấy độ trễ. 10/10.' }
+    ]
   },
   {
     id: '2',
@@ -85,20 +81,32 @@ export const initialProducts = [
     price: 99,
     originalPrice: 129,
     rating: 5,
-    reviewsCount: 38,
+    reviewsCount: 128,
+    salesCount: 1420,
     isHot: true,
     isNew: true,
     inStock: true,
     stock: 40,
-    image: createProductSvg('ViperStrike 4K', '#10b981', '#06b6d4', 'mouse'),
-    description: 'Chuột gaming siêu nhẹ chỉ 49g, mắt đọc quang học PAW3395 chuẩn xác tối đa 26.000 DPI, hỗ trợ Polling Rate 4000Hz mang lại phản hồi chuẩn xác cho game FPS đỉnh cao.',
+    image: getTechPhoto('2', 'Mouse'),
+    gallery: [
+      getTechPhoto('2', 'Mouse'),
+      'https://images.unsplash.com/photo-1626218174358-7769486c4b79?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&w=1000&q=80'
+    ],
+    variants: {
+      colors: ['Matte Black', 'Ghost White', 'Neon Cyan']
+    },
+    description: 'Chuột gaming không dây siêu nhẹ chỉ 49 gram tối ưu cho thi đấu chuyên nghiệp. Trang bị mắt đọc PixArt PAW3395 chuẩn xác tối đa 26.000 DPI, hỗ trợ Polling Rate 4000Hz với dongle đi kèm, mang lại đường di chuột mượt mà và phản xạ chớp nhoáng.',
     specs: {
-      Weight: '49 gram',
-      Sensor: 'PixArt PAW3395 (26,000 DPI, 650 IPS)',
-      PollingRate: '4000Hz Wireless dongle included',
-      Switches: 'Optical Huano 80M clicks',
-      Battery: '500mAh (~70 giờ 1000Hz)'
-    }
+      'Trọng lượng': '49 gram siêu nhẹ không cần đục lỗ',
+      'Cảm biến': 'PixArt PAW3395 flagship (26.000 DPI, 650 IPS, 50G)',
+      'Polling Rate': '4000Hz (Bao gồm 4K Nano Dongle)',
+      'Switch chính': 'Optical Huano Blue Shell Pink Dot (80 triệu lần nhấn)',
+      'Feet chuột': '100% PTFE bo cong viền lướt êm ái trên mọi mặt pad'
+    },
+    reviews: [
+      { id: 'r3', author: 'Hoàng Long', rating: 5, date: 'Hôm qua', comment: 'Chuột siêu nhẹ cầm vẩy cực kỳ linh hoạt, form cầm vừa tay với kiểu cầm claw grip.' }
+    ]
   },
   {
     id: '3',
@@ -108,20 +116,30 @@ export const initialProducts = [
     price: 249,
     originalPrice: 289,
     rating: 5,
-    reviewsCount: 29,
+    reviewsCount: 95,
+    salesCount: 560,
     isHot: false,
     isNew: true,
     inStock: true,
     stock: 15,
-    image: createProductSvg('Apex Spatial', '#8b5cf6', '#ec4899', 'headset'),
-    description: 'Tai nghe gaming chụp tai audiophile với driver planar magnetic 50mm, hỗ trợ âm thanh vòm 7.1 Spatial Audio chân thực, micro chống ồn AI khử tạp âm phòng hoàn hảo.',
+    image: getTechPhoto('3', 'Headset'),
+    gallery: [
+      getTechPhoto('3', 'Headset'),
+      'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=1000&q=80'
+    ],
+    variants: {
+      colors: ['Space Gray', 'Midnight Black']
+    },
+    description: 'Tai nghe gaming cao cấp audiophile với củ loa Planar Magnetic 50mm tái tạo âm thanh chuẩn phòng thu. Tích hợp công nghệ âm thanh vòm 7.1 Spatial Audio định vị chuẩn xác bước chân đối thủ trong game FPS, kèm micro lọc ồn AI thông minh.',
     specs: {
-      Driver: '50mm Planar Magnetic',
-      Audio: '7.1 Spatial Sound / Hi-Res Certified',
-      Microphone: 'Detachable AI Noise-Cancelling Boom Mic',
-      Connectivity: 'Low-latency 2.4GHz + BT 5.3 + 3.5mm',
-      Cushions: 'Memory foam bọc vải lụa thoáng khí'
-    }
+      'Củ loa': '50mm Planar Magnetic phẳng cao cấp',
+      'Âm thanh': '7.1 Spatial Sound / Đạt chuẩn Hi-Res Audio 96kHz/24bit',
+      'Microphone': 'Tháo rời, cảm biến AI lọc 99% tiếng ồn quạt và gõ phím',
+      'Thời lượng pin': '60 giờ nghe liên tục, sạc nhanh 15 phút nghe 6 giờ'
+    },
+    reviews: [
+      { id: 'r4', author: 'Anh Khoa', rating: 5, date: '3 ngày trước', comment: 'Nghe nhạc chi tiết tuyệt vời, chơi PUBG nghe rõ tiếng bước chân trên tầng lầu.' }
+    ]
   },
   {
     id: '4',
@@ -131,20 +149,28 @@ export const initialProducts = [
     price: 379,
     originalPrice: 429,
     rating: 5,
-    reviewsCount: 19,
+    reviewsCount: 64,
+    salesCount: 310,
     isHot: true,
     isNew: false,
     inStock: true,
     stock: 8,
-    image: createProductSvg('LumixView 27" 240Hz', '#f59e0b', '#ef4444', 'monitor'),
-    description: 'Màn hình chuyên e-Sports 27 inch 2K QHD (2560x1440), tần số quét 240Hz siêu mượt, tấm nền Fast-IPS thời gian phản hồi 1ms GtG, dải màu 99% sRGB hỗ trợ DisplayHDR 400.',
+    image: getTechPhoto('4', 'Monitor'),
+    gallery: [
+      getTechPhoto('4', 'Monitor'),
+      'https://images.unsplash.com/photo-1547119957-637f8679db1e?auto=format&fit=crop&w=1000&q=80'
+    ],
+    description: 'Màn hình chuyên nghiệp dành cho thi đấu e-Sports 27 inch 2K QHD (2560x1440), tần số quét 240Hz siêu mượt, tấm nền Fast-IPS phản hồi 1ms GtG loại bỏ hiện tượng bóng mờ. Dải màu đạt 99% sRGB và 95% DCI-P3 chuẩn màu đồ họa.',
     specs: {
-      Size: '27 inch QHD (2560 x 1440)',
-      RefreshRate: '240Hz / 1ms GtG response',
-      Panel: 'Fast-IPS 10-bit (8-bit + FRC)',
-      Sync: 'NVIDIA G-Sync Compatible & FreeSync Premium',
-      Color: '99% sRGB, 95% DCI-P3, HDR400'
-    }
+      'Kích thước': '27 inch 2K QHD (2560 x 1440 pixels)',
+      'Tần số quét': '240Hz / Thời gian phản hồi 1ms GtG',
+      'Tấm nền': 'Fast-IPS 10-bit màu (8-bit + FRC)',
+      'Công nghệ đồng bộ': 'Tương thích NVIDIA G-Sync & AMD FreeSync Premium',
+      'Chuẩn hiển thị': 'VESA DisplayHDR 400, độ sáng 400 nits'
+    },
+    reviews: [
+      { id: 'r5', author: 'Bảo Trâm', rating: 5, date: '5 ngày trước', comment: 'Màu sắc rất trong và chuẩn, 240Hz chơi game bắn súng là một trải nghiệm hoàn toàn khác biệt!' }
+    ]
   },
   {
     id: '5',
@@ -154,19 +180,21 @@ export const initialProducts = [
     price: 39,
     originalPrice: 49,
     rating: 4,
-    reviewsCount: 54,
+    reviewsCount: 210,
+    salesCount: 2300,
     isHot: false,
     isNew: false,
     inStock: true,
     stock: 55,
-    image: createProductSvg('AeroGlide XXL Deskpad', '#06b6d4', '#10b981', 'deskgear'),
-    description: 'Lót chuột cỡ lớn 900x400x4mm dệt bằng sợi Cordura chống nước, bo viền siêu nhỏ chống sờn, đế cao su tự nhiên bám dính chắc chắn trên mọi mặt bàn.',
+    image: getTechPhoto('5', 'Desk Gear'),
+    description: 'Lót chuột cỡ lớn 900x400x4mm dệt bằng sợi Cordura quân sự chống thấm nước tuyệt đối, bo viền siêu phẳng chống cấn cổ tay, đế cao su thiên nhiên bám dính chắc chắn trên mọi mặt bàn làm việc.',
     specs: {
-      Dimensions: '900 x 400 x 4 mm',
-      Material: 'Vải quân sự Cordura chống thấm nước',
-      Base: 'Đế cao su cao cấp chống trượt',
-      Edge: 'Bo viền phẳng thấp chống cấn cổ tay'
-    }
+      'Kích thước': '900 x 400 x 4 mm',
+      'Bề mặt': 'Vải dệt Cordura 500D cao cấp chống nước',
+      'Đế lót': 'Cao su thiên nhiên nguyên khối chống trượt',
+      'Viền': 'May bo viền phẳng dập nhiệt chống tưa rách'
+    },
+    reviews: []
   },
   {
     id: '6',
@@ -176,20 +204,25 @@ export const initialProducts = [
     price: 159,
     originalPrice: 179,
     rating: 5,
-    reviewsCount: 31,
+    reviewsCount: 88,
+    salesCount: 740,
     isHot: true,
     isNew: true,
     inStock: true,
     stock: 18,
-    image: createProductSvg('NovaForge 60% Rapid', '#ec4899', '#f43f5e', 'keyboard'),
-    description: 'Bàn phím cơ Hall Effect nam châm từ tính hỗ trợ Rapid Trigger 0.1mm siêu nhạy cho game thủ Valorant/CS2, hành trình kích hoạt tùy chỉnh từ 0.1mm đến 4.0mm.',
+    image: getTechPhoto('6', 'Keyboard'),
+    variants: {
+      colors: ['Anodized Silver', 'Stealth Black']
+    },
+    description: 'Bàn phím cơ công nghệ cảm ứng từ tính Hall Effect đột phá, hỗ trợ Rapid Trigger 0.1mm siêu nhạy cho game thủ Valorant/CS2. Khả năng tùy chỉnh điểm kích hoạt từ 0.1mm đến 4.0mm cùng tần số lấy mẫu 8000Hz phản hồi 0.125ms.',
     specs: {
-      Layout: '60% Minimalist (61 phím)',
-      Switch: 'Magnetic Hall Effect Gateron KS-20',
-      RapidTrigger: 'Hỗ trợ 0.1mm - 4.0mm với bước chỉnh 0.05mm',
-      PollingRate: '8000Hz (0.125ms delay)',
-      Case: 'Vỏ nhôm CNC anodized nguyên khối'
-    }
+      'Layout': '60% Minimalist (61 phím tối ưu diện tích di chuột)',
+      'Switch': 'Magnetic Hall Effect Gateron KS-20 (Không ma sát tiếp điểm kim loại)',
+      'Rapid Trigger': 'Hành trình tùy chỉnh 0.1mm - 4.0mm với bước chỉnh 0.05mm',
+      'Polling Rate': '8000Hz (Tốc độ phản hồi 0.125ms)',
+      'Vỏ phím': 'Nhôm CNC 6063 nguyên khối bề mặt anodized cao cấp'
+    },
+    reviews: []
   },
   {
     id: '7',
@@ -199,20 +232,21 @@ export const initialProducts = [
     price: 69,
     originalPrice: 79,
     rating: 4,
-    reviewsCount: 22,
+    reviewsCount: 75,
+    salesCount: 620,
     isHot: false,
     isNew: false,
     inStock: true,
     stock: 28,
-    image: createProductSvg('ErgoPulse Vertical', '#3b82f6', '#8b5cf6', 'mouse'),
-    description: 'Chuột công thái học đứng góc nghiêng 57 độ chuẩn tự nhiên, giảm áp lực cổ tay cho người dùng văn phòng và lập trình viên làm việc nhiều giờ liền.',
+    image: getTechPhoto('7', 'Mouse'),
+    description: 'Chuột công thái học đứng góc nghiêng 57 độ mô phỏng tư thế bắt tay tự nhiên, giải phóng hoàn toàn áp lực đè nén lên cổ tay và cánh tay cho lập trình viên và người dùng văn phòng.',
     specs: {
-      Angle: '57 độ nâng đỡ tự nhiên',
-      Sensor: 'Optical 4000 DPI điều chỉnh 4 mức',
-      Clicks: 'Nút bấm Silent Switches êm ái 90%',
-      Connectivity: 'Bluetooth 5.0 + USB 2.4GHz Receiver',
-      Battery: 'Pin sạc Type-C dùng liên tục 3 tháng'
-    }
+      'Góc nghiêng': '57 độ nâng đỡ bàn tay tự nhiên',
+      'Cảm biến': 'Quang học 4000 DPI điều chỉnh 4 mức',
+      'Nút bấm': 'Silent switches giảm tiếng ồn 90%',
+      'Pin': 'Pin sạc Type-C dùng liên tục 3 tháng'
+    },
+    reviews: []
   },
   {
     id: '8',
@@ -222,19 +256,20 @@ export const initialProducts = [
     price: 119,
     originalPrice: 139,
     rating: 5,
-    reviewsCount: 16,
+    reviewsCount: 52,
+    salesCount: 410,
     isHot: false,
     isNew: true,
     inStock: true,
     stock: 20,
-    image: createProductSvg('PulseMic Studio', '#e11d48', '#fb7185', 'deskgear'),
-    description: 'Microphone condenser cổng USB-C chuyên cho streamer và podcast, tích hợp cảm biến chạm tắt mic (tap-to-mute), vòng LED RGB động và shockmount kim loại.',
+    image: getTechPhoto('8', 'Desk Gear'),
+    description: 'Microphone condenser cổng USB-C chuyên dụng cho streamer, podcaster và game thủ. Tích hợp cảm biến chạm tắt mic tiện lợi (tap-to-mute), vòng LED RGB động và giá chống rung shockmount kim loại.',
     specs: {
-      Capsule: '3 x 14mm condenser capsules',
-      PolarPatterns: 'Cardioid, Stereo, Omnidirectional, Bi-directional',
-      BitDepth: '96kHz / 24-bit',
-      Features: 'Gain control, Zero-latency headphone monitoring'
-    }
+      'Loại mic': '3 x 14mm condenser capsules',
+      'Tần số mẫu': '96kHz / 24-bit chất lượng studio',
+      'Tính năng': 'Cảm biến Tap-to-mute có đèn báo, cổng cắm tai nghe 3.5mm giám sát'
+    },
+    reviews: []
   },
   {
     id: '9',
@@ -244,19 +279,21 @@ export const initialProducts = [
     price: 529,
     originalPrice: 599,
     rating: 5,
-    reviewsCount: 12,
+    reviewsCount: 43,
+    salesCount: 180,
     isHot: true,
     isNew: false,
     inStock: false,
     stock: 0,
-    image: createProductSvg('LumixView 34" Curved', '#6366f1', '#a855f7', 'monitor'),
-    description: 'Màn hình cong tỉ lệ 21:9 WQHD (3440x1440) độ cong 1500R ôm trọn tầm nhìn, tần số quét 165Hz, cổng USB-C sạc 90W một dây tiện lợi cho laptop.',
+    image: getTechPhoto('9', 'Monitor'),
+    description: 'Màn hình cong tỉ lệ vàng 21:9 WQHD (3440x1440) độ cong 1500R ôm trọn góc nhìn. Tần số quét 165Hz, cổng USB-C 90W PD sạc và truyền hình ảnh cùng lúc một dây duy nhất.',
     specs: {
-      Size: '34 inch Ultrawide 21:9 (3440 x 1440)',
-      Curvature: '1500R Immersion Curve',
-      RefreshRate: '165Hz / 1ms MPRT',
-      Ports: '2x HDMI 2.1, 1x DP 1.4, 1x USB-C 90W PD'
-    }
+      'Kích thước': '34 inch Ultrawide cong 1500R',
+      'Độ phân giải': 'WQHD (3440 x 1440 pixels)',
+      'Tần số quét': '165Hz / 1ms MPRT',
+      'Cổng cắm': 'USB-C 90W Power Delivery, 2x HDMI 2.1, 1x DP 1.4'
+    },
+    reviews: []
   },
   {
     id: '10',
@@ -266,19 +303,20 @@ export const initialProducts = [
     price: 79,
     originalPrice: 95,
     rating: 4,
-    reviewsCount: 45,
+    reviewsCount: 115,
+    salesCount: 920,
     isHot: false,
     isNew: false,
     inStock: true,
     stock: 35,
-    image: createProductSvg('Zenith Monitor Arm', '#64748b', '#0ea5e9', 'deskgear'),
-    description: 'Tay nâng màn hình piston trợ lực khí nén chịu tải trọng lên tới 15kg (hỗ trợ màn hình 17" - 49" siêu trường), hỗ trợ xoay 360 độ và đi dây ngầm thẩm mỹ.',
+    image: getTechPhoto('10', 'Desk Gear'),
+    description: 'Tay nâng màn hình cơ chế piston trợ lực khí nén cao cấp chịu tải trọng lên tới 15kg (hỗ trợ màn hình 17" đến 49" siêu trường), hỗ trợ xoay 360 độ và rãnh đi dây ngầm thẩm mỹ.',
     specs: {
-      Capacity: 'Chịu tải 2.5kg - 15kg',
-      VESA: '75x75mm và 100x100mm',
-      Motion: 'Nghiêng +90°/-45°, Xoay 180°, Quay 360°',
-      Installation: 'Kẹp bàn (Clamp) hoặc bắt vít xuyên bàn (Grommet)'
-    }
+      'Tải trọng': '2.5kg đến 15kg (hỗ trợ màn hình phẳng và cong)',
+      'Chuẩn VESA': '75x75mm và 100x100mm',
+      'Lắp đặt': 'Kẹp bàn (Clamp) hoặc khoan lỗ xuyên bàn (Grommet)'
+    },
+    reviews: []
   },
   {
     id: '11',
@@ -288,19 +326,20 @@ export const initialProducts = [
     price: 29,
     originalPrice: 35,
     rating: 5,
-    reviewsCount: 68,
+    reviewsCount: 195,
+    salesCount: 3100,
     isHot: false,
     isNew: false,
     inStock: true,
     stock: 80,
-    image: createProductSvg('VortexCoil Cable', '#0284c7', '#38bdf8', 'deskgear'),
-    description: 'Dây cáp xoắn nối rời chuyên dụng cho bàn phím cơ, đầu nối hàng không Aviator GX12 kim loại sáng bóng, bọc 2 lớp dù Paracord + lưới Techflex bền bỉ.',
+    image: getTechPhoto('11', 'Desk Gear'),
+    description: 'Dây cáp xoắn nối rời chuyên dụng cho bàn phím cơ custom, trang bị đầu nối hàng không Aviator GX12 kim loại sáng bóng, bọc 2 lớp dù Paracord và lưới Techflex siêu bền.',
     specs: {
-      Connectors: 'USB-A to Type-C mạ vàng',
-      Aviator: 'GX12 5-pin Detachable Connector',
-      CoilLength: 'Phần xoắn 15cm, đường kính 20mm',
-      TotalLength: 'Tổng chiều dài dây 1.5m'
-    }
+      'Đầu cắm': 'USB-A to Type-C mạ vàng chống nhiễu',
+      'Đầu nối': 'Aviator GX12 5-pin hợp kim kẽm',
+      'Chiều dài': 'Phần xoắn 15cm, tổng chiều dài 1.5m'
+    },
+    reviews: []
   },
   {
     id: '12',
@@ -310,18 +349,19 @@ export const initialProducts = [
     price: 109,
     originalPrice: 129,
     rating: 4,
-    reviewsCount: 27,
+    reviewsCount: 78,
+    salesCount: 540,
     isHot: false,
     isNew: true,
     inStock: true,
     stock: 30,
-    image: createProductSvg('Echo ANC Earbuds', '#14b8a6', '#0f766e', 'headset'),
-    description: 'Tai nghe TWS gaming độ trễ cực thấp 35ms (Game Mode), chống ồn chủ động Hybrid ANC 42dB, chuẩn kháng nước IPX5 và thời lượng pin 32 giờ kèm hộp sạc.',
+    image: getTechPhoto('12', 'Headset'),
+    description: 'Tai nghe TWS gaming độ trễ siêu thấp 35ms (Game Mode), chống ồn chủ động Hybrid ANC 42dB, chuẩn kháng nước IPX5 và thời lượng pin 32 giờ kèm hộp sạc.',
     specs: {
-      Latency: '35ms Ultra-low Game Mode',
-      ANC: 'Chống ồn chủ động 42dB + Xuyên âm',
-      Bluetooth: 'BT 5.4 hỗ trợ codec AAC/LDAC',
-      Battery: '8h tai nghe + 24h dock sạc (Type-C & Sạc không dây)'
-    }
+      'Độ trễ': '35ms siêu thấp chuẩn e-Sports',
+      'Chống ồn': 'Hybrid ANC 42dB + Xuyên âm tự nhiên',
+      'Pin': '8 giờ tai nghe + 24 giờ dock sạc'
+    },
+    reviews: []
   }
 ];
