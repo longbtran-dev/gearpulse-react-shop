@@ -1,4 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { PRODUCTS_API_URL } from '../config/api';
 import {
   createProduct,
   deleteProduct,
@@ -59,7 +60,7 @@ describe('productApi REST service (Lab 6 - Fetch API)', () => {
     const created = await createProduct(newProduct);
     expect(created.id).toBe('101');
     expect(fetchMock).toHaveBeenCalledWith(
-      expect.stringContaining('/products'),
+      expect.stringContaining(PRODUCTS_API_URL),
       expect.objectContaining({
         method: 'POST',
         headers: { 'Content-Type': 'application/json' }
@@ -79,7 +80,7 @@ describe('productApi REST service (Lab 6 - Fetch API)', () => {
     const updated = await updateProduct('1', updatePayload);
     expect(updated.name).toBe('CyberBlade Pro RGB');
     expect(fetchMock).toHaveBeenCalledWith(
-      expect.stringContaining('/products/1'),
+      expect.stringContaining(`${PRODUCTS_API_URL}/1`),
       expect.objectContaining({ method: 'PUT' })
     );
   });
@@ -95,7 +96,7 @@ describe('productApi REST service (Lab 6 - Fetch API)', () => {
     const result = await deleteProduct('1');
     expect(result.id).toBe('1');
     expect(fetchMock).toHaveBeenCalledWith(
-      expect.stringContaining('/products/1'),
+      expect.stringContaining(`${PRODUCTS_API_URL}/1`),
       expect.objectContaining({ method: 'DELETE' })
     );
   });
