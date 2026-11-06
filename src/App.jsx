@@ -68,7 +68,7 @@ export default function App() {
 
   return (
     <div className="gp-app-shell">
-      <Navbar products={products} />
+      <Navbar />
 
       <main className="gp-main-content">
         {/* Lab 5: React Router Routes definition */}

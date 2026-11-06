@@ -4,7 +4,6 @@ import { MemoryRouter } from 'react-router-dom';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import ProductsPage from './ProductsPage';
 import CartProvider from '../context/CartProvider';
-import WishlistProvider from '../context/WishlistProvider';
 
 const testProducts = [
   {
@@ -48,17 +47,15 @@ const testProducts = [
 function renderProductsPage(props = {}) {
   return render(
     <MemoryRouter>
-      <WishlistProvider>
-        <CartProvider>
-          <ProductsPage
-            products={testProducts}
-            loading={false}
-            error={null}
-            onRetry={vi.fn()}
-            {...props}
-          />
-        </CartProvider>
-      </WishlistProvider>
+      <CartProvider>
+        <ProductsPage
+          products={testProducts}
+          loading={false}
+          error={null}
+          onRetry={vi.fn()}
+          {...props}
+        />
+      </CartProvider>
     </MemoryRouter>
   );
 }

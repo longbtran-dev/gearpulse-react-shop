@@ -6,7 +6,7 @@
 ![Vite](https://img.shields.io/badge/Vite-8-purple?logo=vite)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-7952b3?logo=bootstrap)
 ![React Router](https://img.shields.io/badge/React_Router-v7-red?logo=reactrouter)
-![Tests](https://img.shields.io/badge/Vitest-26%2F26_passed-success?logo=vitest)
+![Tests](https://img.shields.io/badge/Vitest-28%2F28_passed-success?logo=vitest)
 
 ---
 
@@ -111,7 +111,7 @@ Trình duyệt sẽ tự động mở ứng dụng tại `http://localhost:5173`
 ```bash
 npm test
 ```
-Toàn bộ 8 bộ kiểm thử (26 bài test) sẽ được thực thi và xác nhận hoạt động chuẩn xác.
+Toàn bộ 9 bộ kiểm thử (28 bài test) sẽ được thực thi và xác nhận hoạt động chuẩn xác.
 
 ### 4. Đóng gói sản phẩm (Build)
 ```bash

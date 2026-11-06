@@ -3,7 +3,6 @@ import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { describe, expect, it, vi } from 'vitest';
 import ProductCard from './ProductCard';
-import WishlistProvider from '../context/WishlistProvider';
 
 describe('ProductCard component (Lab 1 - Components & Props)', () => {
   const sampleProduct = {
@@ -23,9 +22,7 @@ describe('ProductCard component (Lab 1 - Components & Props)', () => {
   it('renders product details, pricing, discount, and status badges', () => {
     render(
       <MemoryRouter>
-        <WishlistProvider>
-          <ProductCard product={sampleProduct} onQuickView={vi.fn()} onAddToCart={vi.fn()} />
-        </WishlistProvider>
+        <ProductCard product={sampleProduct} onQuickView={vi.fn()} onAddToCart={vi.fn()} />
       </MemoryRouter>
     );
 
@@ -44,20 +41,20 @@ describe('ProductCard component (Lab 1 - Components & Props)', () => {
 
     render(
       <MemoryRouter>
-        <WishlistProvider>
-          <ProductCard
-            product={sampleProduct}
-            onQuickView={handleQuickView}
-            onAddToCart={handleAddToCart}
-          />
-        </WishlistProvider>
+        <ProductCard
+          product={sampleProduct}
+          onQuickView={handleQuickView}
+          onAddToCart={handleAddToCart}
+        />
       </MemoryRouter>
     );
 
-    await user.click(screen.getByRole('button', { name: /quick view/i }));
+    const quickViewBtn = screen.getByRole('button', { name: /quick view/i });
+    await user.click(quickViewBtn);
     expect(handleQuickView).toHaveBeenCalledWith(sampleProduct);
 
-    await user.click(screen.getByRole('button', { name: /add to cart/i }));
+    const addBtn = screen.getByRole('button', { name: /add to cart/i });
+    await user.click(addBtn);
     expect(handleAddToCart).toHaveBeenCalledWith(sampleProduct);
   });
 });
